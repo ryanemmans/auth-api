@@ -6,8 +6,8 @@ const cors = require('cors');
 const morgan = require('morgan');
 
 // Esoteric Resources
-const errorHandler = require('./error-handlers/500.js');
-const notFound = require('./error-handlers/404.js');
+// const errorHandler = require('./error-handlers/500.js');
+// const notFound = require('./error-handlers/404.js');
 const authRoutes = require('./auth/routes.js');
 
 // Prepare the express app
@@ -24,11 +24,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(authRoutes);
 
 // Catchalls
-app.use(notFound);
-app.use(errorHandler);
+// app.use(notFound);
+// app.use(errorHandler);
+
+app.get('/', (req, res) => {
+  res.status(201).send('Hello World');
+});
 
 module.exports = {
-  server: app,
+  app,
   start: (port) => {
     app.listen(port, () => {
       console.log(`Server Up on ${port}`);

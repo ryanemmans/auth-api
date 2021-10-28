@@ -58,7 +58,6 @@ Your server should respond to the following routes:
 - GET `/secret` should require a valid bearer token
 - GET `/users` should require a valid token and “delete” permissions
 
-
 V2 API Routes (`/api/v2/...`) must now be protected with the proper permissions based on user capability, using Bearer Authentication and an ACL
 
 - `app.get(...)` should require authentication only, no specific roles
